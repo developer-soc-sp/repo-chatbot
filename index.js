@@ -11,7 +11,7 @@ app.get("/ai",function(req,res){
                             }));
 });
 
-app.get("/ai",function(req,res){
+app.post("/ai",function(req,res){
     var response = "POST:This is a sample response from your webhook";
     res.send(JSON.stringify({  "fulfillmentText": response + "for v2"
                             }));
