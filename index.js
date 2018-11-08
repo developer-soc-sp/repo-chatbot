@@ -5,6 +5,12 @@ app.get("/", function(req,res){
     res.send("<h1>Hello World</>");
 });
 
+app.get("/ai",function(req,res){
+    var response = "This is a sample response from your webhook";
+    res.send(JSON.stringify({  "fulfillmentText": response + "for v2"
+                            }));
+});
+    
 var listener = app.listen(process.env.PORT,
                         process.env.IP,
                         function(){
