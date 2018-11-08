@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/developer-soc-sp/repo-chatbot/issues"
   },
-  "homepage": "https://github.com/developer-soc-sp/repo-chatbot#readme"
+  "homepage": "https://github.com/developer-soc-sp/repo-chatbot#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {}
 }
