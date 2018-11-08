@@ -6,7 +6,13 @@ app.get("/", function(req,res){
 });
 
 app.get("/ai",function(req,res){
-    var response = "This is a sample response from your webhook";
+    var response = "GET:This is a sample response from your webhook";
+    res.send(JSON.stringify({  "fulfillmentText": response + "for v2"
+                            }));
+});
+
+app.get("/ai",function(req,res){
+    var response = "POST:This is a sample response from your webhook";
     res.send(JSON.stringify({  "fulfillmentText": response + "for v2"
                             }));
 });
