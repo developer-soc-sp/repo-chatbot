@@ -83,4 +83,11 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 const expressApp = express().use(bodyParser.json());
 
 expressApp.post('/fulfillment', app);
-expressApp.listen(3000);
+//expressApp.listen(3000);
+var listener = expressApp.listen(process.env.PORT,
+  process.env.IP,
+  function(){
+      console.log("server started");
+      console.log("listening on port " +
+      listener.address().port);
+  });
