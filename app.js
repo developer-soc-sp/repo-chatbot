@@ -1,9 +1,26 @@
 'use strict';
- 
+const express = require('express');
+const bodyParser = require('body-parser');
 const functions = require('firebase-functions');
 const {WebhookClient} = require('dialogflow-fulfillment');
 const {Card, Suggestion} = require('dialogflow-fulfillment');
- 
+var admin = require("firebase-admin");
+const {
+    dialogflow,
+    Image,
+    Table,
+    Carousel,
+   } = require('actions-on-google');
+
+var serviceAccount = require("./serviceAccount.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://firstagent-f1e8f.firebaseio.com"
+});
+
+var db = admin.firestore();
+const app = dialogflow(); 
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
  
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
@@ -62,3 +79,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   // intentMap.set('your intent name here', googleAssistantHandler);
   agent.handleRequest(intentMap);
 });
+
+const expressApp = express().use(bodyParser.json());
+
+expressApp.post('/fulfillment', app);
+expressApp.listen(3000);
