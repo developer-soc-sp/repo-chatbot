@@ -194,7 +194,7 @@ app.intent('TestIntent', conv => {
         .then(ref => {
           //conv.add(`Hi, This is a test and I will write an entry into firebase `+ ref.id +`\n  \n`);
           conv.add(new BasicCard({
-            text: 'this is a basic text'            
+            text: `this is a basic text`,            
           }));
           console.log('Added document with ID: ', ref.id);
           resolve("Good" + ref.id);
