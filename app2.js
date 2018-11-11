@@ -181,7 +181,7 @@ app.intent('GetFood', conv => {
 
 app.intent('TestIntent', conv => {
     return addTestData(conv).then((output)=>{
-        conv.add("Resolved");
+        //conv.add("Resolved");
         return console.log("TestIntent executed");
     })
   });
@@ -193,7 +193,7 @@ app.intent('TestIntent', conv => {
           })
         .then(ref => {
           //conv.add(`Hi, This is a test and I will write an entry into firebase `+ ref.id +`\n  \n`);
-          conv.add(new BasicCard({
+          conv.ask(new BasicCard({
             text: `This is a basic card.  Text in a basic card can include "quotes" and most other unicode characters including emoji 📱.  Basic cards also support some markdown formatting like *emphasis* or _italics_, **strong** or __bold__, and ***bold itallic*** or ___strong emphasis___ as well as other things like line  \nbreaks`,            
           }));
           console.log('Added document with ID: ', ref.id);
