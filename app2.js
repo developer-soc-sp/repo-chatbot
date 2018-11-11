@@ -181,7 +181,7 @@ app.intent('GetFood', conv => {
 
 app.intent('TestIntent', conv => {
     return addTestData(conv).then((output)=>{
-        //conv.ask("Resolved");
+        conv.add("Resolved");
         return console.log("TestIntent executed");
     })
   });
