@@ -180,15 +180,16 @@ app.intent('GetFood', conv => {
 });
 
 app.intent('TestIntent', conv => {
-    
+    var r;
     var addDoc = db.collection('testing').add({
         name: 'Tokyo',
         country: 'Japan'
       })
     .then(ref => {
+      r = ref.id;
       console.log('Added document with ID: ', ref.id);
     }); 
-    conv.ask('Hi, This is a test and I will write an entry into firebase '+ ref.id );
+    conv.ask('Hi, This is a test and I will write an entry into firebase '+ r );
   });
 
 //app.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
