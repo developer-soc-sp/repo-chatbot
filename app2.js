@@ -186,10 +186,10 @@ app.intent('TestIntent', conv => {
         country: 'Japan'
       })
     .then(ref => {
-      r +=  ref.id;
+      addDoc.id =  ref.id;
       console.log('Added document with ID: ', ref.id);
     }); 
-    conv.ask('Hi, This is a test and I will write an entry into firebase '+ r );
+    conv.ask('Hi, This is a test and I will write an entry into firebase '+ addDoc.id );
   });
 
 //app.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
