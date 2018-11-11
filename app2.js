@@ -187,11 +187,13 @@ app.intent('TestIntent', conv => {
       })
     .then(ref => {
       addDoc.id =  ref.id;
-      console.log('Added document with ID: ', ref.id);
+      return console.log('Added document with ID: ', ref.id);
     }); 
     addDoc.then(conv.ask('Hi, This is a test and I will write an entry into firebase '+ addDoc.id ));
   });
-
+ function addTestData(){
+     
+ }
 //app.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
 const expressApp = express().use(bodyParser.json(), app);
 
