@@ -180,9 +180,12 @@ app.intent('GetFood', conv => {
 });
 
 app.intent('TestIntent', conv => {
-
-    conv.ask('Hi, This is a test' );
-
+    
+    var addDoc = db.collection('testing').doc().add("This is a test")
+    .then(ref => {
+      console.log('Added document with ID: ', ref.id);
+    }); 
+    conv.ask('Hi, This is a test and I will write an entry into firebase '+ ref.id );
   });
 
 //app.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
