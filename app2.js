@@ -180,19 +180,22 @@ app.intent('GetFood', conv => {
 });
 
 app.intent('TestIntent', conv => {
-    var r="test:";
-    var addDoc = db.collection('testing').add({
-        name: 'Tokyo',
-        country: 'Japan'
-      })
-    .then(ref => {
-      addDoc.id =  ref.id;
-      return console.log('Added document with ID: ', ref.id);
-    }); 
-    addDoc.then(conv.ask('Hi, This is a test and I will write an entry into firebase '+ addDoc.id ));
+    return addTestData(conv).then((output)=>{
+        //conv.ask("Resolved");
+        return console.log("TestIntent executed");
+    })
   });
- function addTestData(){
-     
+ function addTestData(conv){
+    return new Promise((resolve, reject) => {
+        var addDoc = db.collection('testing').add({
+            name: 'Tokyo',
+            country: 'Japan'
+          })
+        .then(ref => {
+          conv.ask('Hi, This is a test and I will write an entry into firebase '+ ref.id);
+          return console.log('Added document with ID: ', ref.id);
+        }); 
+    });
  }
 //app.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
 const expressApp = express().use(bodyParser.json(), app);
