@@ -186,7 +186,7 @@ app.intent('TestIntent', conv => {
         country: 'Japan'
       })
     .then(ref => {
-      r += ref.id;
+      r += "test:" + ref.id;
       console.log('Added document with ID: ', ref.id);
     }); 
     conv.ask('Hi, This is a test and I will write an entry into firebase '+ r );
