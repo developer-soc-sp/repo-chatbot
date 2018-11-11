@@ -181,7 +181,7 @@ app.intent('GetFood', conv => {
 
 app.intent('TestIntent', conv => {
     
-    var addDoc = db.collection('testing').doc().add("This is a test")
+    var addDoc = db.collection('testing').add("This is a test")
     .then(ref => {
       console.log('Added document with ID: ', ref.id);
     }); 
