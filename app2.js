@@ -181,7 +181,10 @@ app.intent('GetFood', conv => {
 
 app.intent('TestIntent', conv => {
     
-    var addDoc = db.collection('testing').add("This is a test")
+    var addDoc = db.collection('testing').add({
+        name: 'Tokyo',
+        country: 'Japan'
+      })
     .then(ref => {
       console.log('Added document with ID: ', ref.id);
     }); 
