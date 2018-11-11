@@ -192,9 +192,14 @@ app.intent('TestIntent', conv => {
             country: 'Japan'
           })
         .then(ref => {
-          conv.ask('Hi, This is a test and I will write an entry into firebase '+ ref.id);
-          return console.log('Added document with ID: ', ref.id);
+          conv.add('Hi, This is a test and I will write an entry into firebase '+ ref.id);
+          console.log('Added document with ID: ', ref.id);
+          resolve("Good" + ref.id);
         }); 
+    }).catch(err => {
+        console.log('Error getting documents', err);
+        conv.add("Error");
+        reject("test");
     });
  }
 //app.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
