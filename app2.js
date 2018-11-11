@@ -182,9 +182,9 @@ app.intent('GetFood', conv => {
 app.intent('TestIntent', conv => {
     return addTestData(conv).then((output)=>{
         //conv.add("Resolved");
-        conv.ask(new BasicCard({
-            speech: `test`,
-            text: `This is a basic card.  Text in a basic card can include "quotes" and most other unicode characters including emoji 📱.  Basic cards also support some markdown formatting like *emphasis* or _italics_, **strong** or __bold__, and ***bold itallic*** or ___strong emphasis___ as well as other things like line  \nbreaks`,            
+        conv.ask(new SimpleResponse({
+            speech: 'Howdy, this is GeekNum. I can tell you fun facts about almost any number, my favorite is 42. What number do you have in mind?',
+            text: 'Howdy! I can tell you fun facts about almost any number. What do you have in mind?',
           }));
         return console.log("TestIntent executed");
     })
